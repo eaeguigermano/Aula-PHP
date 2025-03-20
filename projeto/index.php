@@ -14,7 +14,18 @@
             try{
                 $email = $_POST['email'];    
                 $senha = $_POST['senha'];
-
+                if(($email == "adm@adm.com") && ($senha =="123")){
+                    session_start();
+                    $_SESSION['usuario'] = $email;
+                    $_SESSION['acsso'] = true
+                    header('location: principal.php');
+                } else {
+                    $mensagem['erro'] = 'Usuário e/ou senha incorretos!';
+                }
+            } catch(Exception $e){
+                echo "Erro: ".$e->getMessage();
+                die();
+            }
             }}
     <form action="" method="POST">   
             <div class="row">        
